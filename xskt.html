@@ -3405,9 +3405,9 @@
 
       .bkqmiennam {
          color: #322C20;
-         font: 11px Arial,Helvetica,sans-serif;
+         font: 11px Arial, Helvetica, sans-serif;
          line-height: 1.5;
-         font-family: Arial,Helvetica,sans-serif;
+         font-family: Arial, Helvetica, sans-serif;
          font-size: 11px;
          cursor: pointer;
          -webkit-border-horizontal-spacing: 0px;
@@ -4400,7 +4400,7 @@
                                                             <div class="clear"></div>
                                                          </div>
                                                       </div>
-                                                      
+
                                                       <div class="box_kqxs">
                                                          <div class="top" style="background-color: #b22222;">
                                                             <div class="bkl">
@@ -4454,7 +4454,8 @@
                                                                            <td class="ngay"> 15/02/25</td>
                                                                         </tr>
                                                                         <tr>
-                                                                           <td class="giai8" style="height: 36px;"> Giải tám</td>
+                                                                           <td class="giai8" style="height: 36px;"> Giải
+                                                                              tám</td>
                                                                         </tr>
                                                                         <tr>
                                                                            <td class="giai7"> Giải bảy</td>
@@ -4936,188 +4937,6 @@
                                           </table>
                                        </div>
                                     </td>
-                                    <td class="right">
-                                       <div id="thay_doi_ket_qua" style="width: 300px;">
-                                       <!-- <div id="thay_doi_ket_qua" style="width: 300px; display: none;"> -->
-                                          <div class="box_formthongkexoso">
-                                             <script>
-                                                function checkSelection() {
-                                                   const selectedValue = document.getElementById('frm_dove_giai').value;
-                                                   const extraOptions3 = document.getElementById('extraOptionsThree');
-                                                   const extraOptions4 = document.getElementById('extraOptionsFour');
-                                                   const extraOptions6 = document.getElementById('extraOptionsSix');
-                        
-                                                   switch (selectedValue) {
-                                                      case 'giai3':
-                                                         extraOptionsThree.style.display = "";
-                                                         extraOptionsFour.style.display = "none";
-                                                         extraOptionsSix.style.display = "none";
-                                                         break;
-                                                      case 'giai4':
-                                                         extraOptionsFour.style.display = "";
-                                                         extraOptionsSix.style.display = "none";
-                                                         extraOptionsThree.style.display = "none";
-                                                         break;
-                                                      case 'giai6':
-                                                         extraOptionsSix.style.display = "";
-                                                         extraOptionsFour.style.display = "none";
-                                                         extraOptionsThree.style.display = "none";
-                                                         break;
-                                                      default:
-                                                         extraOptionsFour.style.display = "none";
-                                                         extraOptionsSix.style.display = "none";
-                                                         extraOptionsThree.style.display = "none";
-                                                         break;
-                                                   }
-                                                }
-                                                function changeResult() {
-                                                   const giai = document.getElementById('frm_dove_giai').value;
-                                                   const soThayDoi = document.getElementById('so_thay_doi').value;
-                                                   switch (giai) {
-                                                      case 'giaidb':
-                                                      case 'giai1':
-                                                      case 'giai2':
-                                                      case 'giai5':
-                                                      case 'giai7':
-                                                      case 'giai8':
-                                                         document.getElementById(giai).innerHTML = `<div style="width: 100%" id="random_number_loading">0</div>`;
-                                                         setTimeout(() => {
-                                                            document.getElementById(giai).innerHTML = soThayDoi;
-                                                         }, 1000);
-                                                         break;
-                                                      case 'giai3':
-                                                         const giai3 = document.getElementById('thay_doi_giai_3').value;
-                                                         document.getElementById(giai3).innerHTML = `<div style="width: 100%" id="random_number_loading">0</div>`;
-                                                         setTimeout(() => {
-                                                            document.getElementById(giai3).innerHTML = soThayDoi;
-                                                         }, 1000);
-                                                         break;
-                                                      case 'giai4':
-                                                         const giai4 = document.getElementById('thay_doi_giai_4').value;
-                                                         document.getElementById(giai4).innerHTML = `<div style="width: 100%" id="random_number_loading">0</div>`;
-                                                         setTimeout(() => {
-                                                            document.getElementById(giai4).innerHTML = soThayDoi;
-                                                         }, 1000);
-                                                         break;
-                                                      case 'giai6':
-                                                         const giai6 = document.getElementById('thay_doi_giai_6').value;
-                                                         document.getElementById(giai6).innerHTML = `<div style="width: 100%" id="random_number_loading">0</div>`;
-                                                         setTimeout(() => {
-                                                            document.getElementById(giai6).innerHTML = soThayDoi;
-                                                         }, 1000);
-                                                         break;
-                                                      default:
-                                                         break;
-                                                   }
-                        
-                                                }
-
-                                                function resetResult() {
-                                                   const giai_arr = ['giaidb', 'giai1', 'giai2', 'giai5', 'giai7', 'giai8', 'giai3_1', 'giai3_2', 'giai4_1', 'giai4_2', 'giai4_3', 'giai4_4', 'giai4_5', 'giai4_6', 'giai6_1', 'giai6_2', 'giai6_3'];
-                                                   giai_arr.forEach((giai) => document.getElementById(giai).innerHTML = `<img src="https://www.minhngoc.net.vn//template/2016/images/choxoso.gif" alt="Loading...">`)
-                                                }
-                                             </script>
-                                             <h3 class="slecttk">Thay đổi kết quả xổ số</h3>
-                                             <div>
-                                                <div>
-                                                   <form id="doveso" name="doveso" method="get">
-                                                      <table border="0" align="center" cellpadding="0" cellspacing="2" width="100%"
-                                                         style="max-width:400px;">
-                                                         <tr>
-                                                            <td align="right" nowrap="nowrap">Giải:
-                                                            </td>
-                                                            <td align="left" nowrap="nowrap">
-                                                               <select onchange="checkSelection()" name="giai" id="frm_dove_giai"
-                                                                  style="width:100px;">
-                                                                  <option value="giaidb">Giải đặc biệt
-                                                                  </option>
-                                                                  <option value="giai1">Giải nhất
-                                                                  </option>
-                                                                  <option value="giai2">Giải nhì
-                                                                  </option>
-                                                                  <option value="giai3">Giải ba
-                                                                  </option>
-                                                                  <option value="giai4">Giải tư
-                                                                  </option>
-                                                                  <option value="giai5">Giải năm
-                                                                  </option>
-                                                                  <option value="giai6">Giải sáu
-                                                                  </option>
-                                                                  <option value="giai7">Giải bảy
-                                                                  </option>
-                                                                  <option value="giai8">Giải tám
-                                                                  </option>
-                                                               </select>
-                                                            </td>
-                                                         </tr>
-                                                         <tr id="extraOptionsThree" style="display:none;">
-                                                            <td align="right" nowrap="nowrap">Extra:
-                                                            </td>
-                                                            <td align="left" nowrap="nowrap">
-                                                               <select id="thay_doi_giai_3" style="width:100px;">
-                                                                  <option value="giai3_1">Giải 3-1
-                                                                  </option>
-                                                                  <option value="giai3_2">Giải 3-2
-                                                                  </option>
-                                                               </select>
-                                                            </td>
-                                                         </tr>
-                                                         <tr id="extraOptionsFour" style="display:none;">
-                                                            <td align="right" nowrap="nowrap">Extra:
-                                                            </td>
-                                                            <td align="left" nowrap="nowrap">
-                                                               <select id="thay_doi_giai_4" style="width:100px;">
-                                                                  <option value="giai4_1">Giải 4-1
-                                                                  </option>
-                                                                  <option value="giai4_2">Giải 4-2
-                                                                  </option>
-                                                                  <option value="giai4_3">Giải 4-3
-                                                                  </option>
-                                                                  <option value="giai4_4">Giải 4-4
-                                                                  </option>
-                                                                  <option value="giai4_5">Giải 4-5
-                                                                  </option>
-                                                                  <option value="giai4_6">Giải 4-6
-                                                                  </option>
-                                                                  <option value="giai4_7">Giải 4-7
-                                                                  </option>
-                                                               </select>
-                                                            </td>
-                                                         </tr>
-                                                         <tr id="extraOptionsSix" style="display:none;">
-                                                            <td align="right" nowrap="nowrap">Extra:
-                                                            </td>
-                                                            <td align="left" nowrap="nowrap">
-                                                               <select id="thay_doi_giai_6" style="width:100px;">
-                                                                  <option value="giai6_1">Giải 6-1
-                                                                  </option>
-                                                                  <option value="giai6_2">Giải 6-2
-                                                                  </option>
-                                                                  <option value="giai6_3">Giải 6-3
-                                                                  </option>
-                                                               </select>
-                                                            </td>
-                                                         </tr>
-                                                         <td align="right" nowrap="nowrap">Số:</td>
-                                                         <td>
-                                                            <input name="so" id="so_thay_doi" />
-                                                         </td>
-                                                         <td colspan="2" align="right" nowrap="nowrap">
-                                                            <input onclick="changeResult()" type="button" class="btnxemthongke"
-                                                               value="Thay đổi" />
-                                                         </td>
-                                                         <td colspan="2" align="right" nowrap="nowrap">
-                                                            <input onclick="resetResult()" type="button" class="btnxemthongke"
-                                                               value="Reset" />
-                                                         </td>
-                                                      </table>
-                                                   </form>
-                                                </div>
-                                             </div>
-                                          </div>
-                                          <div class="clear"></div>
-                                       </div>
-                                    </td>
                                  </tr>
                               </table>
                            </div>
@@ -5245,7 +5064,184 @@
                      </div>
                   </div>
                </div>
-               
+               <div id="thay_doi_ket_qua" style="width: 300px; display: none;">
+                  <div class="box_formthongkexoso">
+                     <script>
+                        function checkSelection() {
+                           const selectedValue = document.getElementById('frm_dove_giai').value;
+                           const extraOptions3 = document.getElementById('extraOptionsThree');
+                           const extraOptions4 = document.getElementById('extraOptionsFour');
+                           const extraOptions6 = document.getElementById('extraOptionsSix');
+
+                           switch (selectedValue) {
+                              case 'giai3':
+                                 extraOptionsThree.style.display = "";
+                                 extraOptionsFour.style.display = "none";
+                                 extraOptionsSix.style.display = "none";
+                                 break;
+                              case 'giai4':
+                                 extraOptionsFour.style.display = "";
+                                 extraOptionsSix.style.display = "none";
+                                 extraOptionsThree.style.display = "none";
+                                 break;
+                              case 'giai6':
+                                 extraOptionsSix.style.display = "";
+                                 extraOptionsFour.style.display = "none";
+                                 extraOptionsThree.style.display = "none";
+                                 break;
+                              default:
+                                 extraOptionsFour.style.display = "none";
+                                 extraOptionsSix.style.display = "none";
+                                 extraOptionsThree.style.display = "none";
+                                 break;
+                           }
+                        }
+                        function changeResult() {
+                           const giai = document.getElementById('frm_dove_giai').value;
+                           const soThayDoi = document.getElementById('so_thay_doi').value;
+                           switch (giai) {
+                              case 'giaidb':
+                              case 'giai1':
+                              case 'giai2':
+                              case 'giai5':
+                              case 'giai7':
+                              case 'giai8':
+                                 document.getElementById(giai).innerHTML = `<div style="width: 100%" id="random_number_loading">0</div>`;
+                                 setTimeout(() => {
+                                    document.getElementById(giai).innerHTML = soThayDoi;
+                                 }, 1000);
+                                 break;
+                              case 'giai3':
+                                 const giai3 = document.getElementById('thay_doi_giai_3').value;
+                                 document.getElementById(giai3).innerHTML = `<div style="width: 100%" id="random_number_loading">0</div>`;
+                                 setTimeout(() => {
+                                    document.getElementById(giai3).innerHTML = soThayDoi;
+                                 }, 1000);
+                                 break;
+                              case 'giai4':
+                                 const giai4 = document.getElementById('thay_doi_giai_4').value;
+                                 document.getElementById(giai4).innerHTML = `<div style="width: 100%" id="random_number_loading">0</div>`;
+                                 setTimeout(() => {
+                                    document.getElementById(giai4).innerHTML = soThayDoi;
+                                 }, 1000);
+                                 break;
+                              case 'giai6':
+                                 const giai6 = document.getElementById('thay_doi_giai_6').value;
+                                 document.getElementById(giai6).innerHTML = `<div style="width: 100%" id="random_number_loading">0</div>`;
+                                 setTimeout(() => {
+                                    document.getElementById(giai6).innerHTML = soThayDoi;
+                                 }, 1000);
+                                 break;
+                              default:
+                                 break;
+                           }
+
+                        }
+
+                        function resetResult() {
+                           const giai_arr = ['giaidb', 'giai1', 'giai2', 'giai5', 'giai7', 'giai8', 'giai3_1', 'giai3_2', 'giai4_1', 'giai4_2', 'giai4_3', 'giai4_4', 'giai4_5', 'giai4_6', 'giai6_1', 'giai6_2', 'giai6_3'];
+                           giai_arr.forEach((giai) => document.getElementById(giai).innerHTML = `<img src="https://www.minhngoc.net.vn//template/2016/images/choxoso.gif" alt="Loading...">`)
+                        }
+                     </script>
+                     <h3 class="slecttk">Thay đổi kết quả xổ số</h3>
+                     <div>
+                        <div>
+                           <form id="doveso" name="doveso" method="get">
+                              <table border="0" align="center" cellpadding="0" cellspacing="2" width="100%"
+                                 style="max-width:400px;">
+                                 <tr>
+                                    <td align="right" nowrap="nowrap">Giải:
+                                    </td>
+                                    <td align="left" nowrap="nowrap">
+                                       <select onchange="checkSelection()" name="giai" id="frm_dove_giai"
+                                          style="width:100px;">
+                                          <option value="giaidb">Giải đặc biệt
+                                          </option>
+                                          <option value="giai1">Giải nhất
+                                          </option>
+                                          <option value="giai2">Giải nhì
+                                          </option>
+                                          <option value="giai3">Giải ba
+                                          </option>
+                                          <option value="giai4">Giải tư
+                                          </option>
+                                          <option value="giai5">Giải năm
+                                          </option>
+                                          <option value="giai6">Giải sáu
+                                          </option>
+                                          <option value="giai7">Giải bảy
+                                          </option>
+                                          <option value="giai8">Giải tám
+                                          </option>
+                                       </select>
+                                    </td>
+                                 </tr>
+                                 <tr id="extraOptionsThree" style="display:none;">
+                                    <td align="right" nowrap="nowrap">Extra:
+                                    </td>
+                                    <td align="left" nowrap="nowrap">
+                                       <select id="thay_doi_giai_3" style="width:100px;">
+                                          <option value="giai3_1">Giải 3-1
+                                          </option>
+                                          <option value="giai3_2">Giải 3-2
+                                          </option>
+                                       </select>
+                                    </td>
+                                 </tr>
+                                 <tr id="extraOptionsFour" style="display:none;">
+                                    <td align="right" nowrap="nowrap">Extra:
+                                    </td>
+                                    <td align="left" nowrap="nowrap">
+                                       <select id="thay_doi_giai_4" style="width:100px;">
+                                          <option value="giai4_1">Giải 4-1
+                                          </option>
+                                          <option value="giai4_2">Giải 4-2
+                                          </option>
+                                          <option value="giai4_3">Giải 4-3
+                                          </option>
+                                          <option value="giai4_4">Giải 4-4
+                                          </option>
+                                          <option value="giai4_5">Giải 4-5
+                                          </option>
+                                          <option value="giai4_6">Giải 4-6
+                                          </option>
+                                          <option value="giai4_7">Giải 4-7
+                                          </option>
+                                       </select>
+                                    </td>
+                                 </tr>
+                                 <tr id="extraOptionsSix" style="display:none;">
+                                    <td align="right" nowrap="nowrap">Extra:
+                                    </td>
+                                    <td align="left" nowrap="nowrap">
+                                       <select id="thay_doi_giai_6" style="width:100px;">
+                                          <option value="giai6_1">Giải 6-1
+                                          </option>
+                                          <option value="giai6_2">Giải 6-2
+                                          </option>
+                                          <option value="giai6_3">Giải 6-3
+                                          </option>
+                                       </select>
+                                    </td>
+                                 </tr>
+                                 <td align="right" nowrap="nowrap">Số:</td>
+                                 <td>
+                                    <input name="so" id="so_thay_doi" />
+                                 </td>
+                                 <td colspan="2" align="right" nowrap="nowrap">
+                                    <input onclick="changeResult()" type="button" class="btnxemthongke"
+                                       value="Thay đổi" />
+                                 </td>
+                                 <td colspan="2" align="right" nowrap="nowrap">
+                                    <input onclick="resetResult()" type="button" class="btnxemthongke" value="Reset" />
+                                 </td>
+                              </table>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="clear"></div>
+               </div>
          </center>
       </div>
    </div>
