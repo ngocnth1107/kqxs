@@ -3486,6 +3486,7 @@
                                              function changeResult() {
                                                 const giai = document.getElementById('frm_dove_giai').value;
                                                 const soThayDoi = document.getElementById('so_thay_doi').value;
+                                                const duration = 30000;
                                                 switch (giai) {
                                                    case 'giaidb':
                                                    case 'giai1':
@@ -3493,40 +3494,23 @@
                                                    case 'giai5':
                                                    case 'giai7':
                                                    case 'giai8':
-                                                      document.getElementById(giai).innerHTML = `<div style="width: 100%" id="random_number_loading">0000</div>`;
-                                                      setTimeout(() => {
-                                                         document.getElementById(giai).innerHTML = soThayDoi;
-                                                         localStorage.setItem(giai, soThayDoi);
-                                                      }, 600000);
+                                                      displayRandomNumber(giai, duration, soThayDoi);
                                                       break;
                                                    case 'giai3':
                                                       const giai3 = document.getElementById('thay_doi_giai_3').value;
-                                                      document.getElementById(giai3).innerHTML = `<div style="width: 100%" id="random_number_loading">0000</div>`;
-                                                      setTimeout(() => {
-                                                         document.getElementById(giai3).innerHTML = soThayDoi;
-                                                         localStorage.setItem(giai3, soThayDoi);
-                                                      }, 600000);
+                                                      displayRandomNumber(giai3, duration, soThayDoi);
                                                       break;
                                                    case 'giai4':
                                                       const giai4 = document.getElementById('thay_doi_giai_4').value;
-                                                      document.getElementById(giai4).innerHTML = `<div style="width: 100%" id="random_number_loading">0000</div>`;
-                                                      setTimeout(() => {
-                                                         document.getElementById(giai4).innerHTML = soThayDoi;
-                                                         localStorage.setItem(giai4, soThayDoi);
-                                                      }, 600000);
+                                                      displayRandomNumber(giai4, duration, soThayDoi);
                                                       break;
                                                    case 'giai6':
                                                       const giai6 = document.getElementById('thay_doi_giai_6').value;
-                                                      document.getElementById(giai6).innerHTML = `<div style="width: 100%" id="random_number_loading">0000</div>`;
-                                                      setTimeout(() => {
-                                                         document.getElementById(giai6).innerHTML = soThayDoi;
-                                                         localStorage.setItem(giai6, soThayDoi);
-                                                      }, 600000);
+                                                      displayRandomNumber(giai6, duration, soThayDoi);
                                                       break;
                                                    default:
                                                       break;
                                                 }
-
                                              }
 
                                              function resetResult() {
@@ -3534,6 +3518,7 @@
                                                 giai_arr.forEach((giai) => {
                                                    document.getElementById(giai).innerHTML = `<img src="https://www.minhngoc.net.vn//template/2016/images/choxoso.gif" alt="Loading...">`;
                                                    localStorage.removeItem(giai)
+                                                   localStorage.removeItem(`randomNumberData_${giai}`);
                                                 })
                                              }
                                           </script>
@@ -3891,7 +3876,7 @@
                                  </td>
                                  <td class="right">
                                     <div> <img src="https://img.minhngoc.net/ads/tructiep-250x360.gif" alt="img-left"
-                                       height="500" width="100%"></div>
+                                          height="500" width="100%"></div>
                                  </td>
                               </tr>
                            </table>
@@ -4102,22 +4087,70 @@
 
       setInterval(updateNumbers, 100);
       updateNumbers();
+
+      function getRandomNumberData(key) {
+         const now = Date.now();
+         const storedData = localStorage.getItem(key);
+         if (storedData) {
+            const numberData = JSON.parse(storedData);
+            if (now < numberData.expirationTime) {
+               return numberData;
+            }
+         }
+         return null;
+      }
+
+      function setRandomNumberData(key, number, duration, soThayDoi) {
+         const now = Date.now();
+         const numberData = {
+            giai: number,
+            expirationTime: now + duration,
+            soThayDoi: soThayDoi
+         };
+         localStorage.setItem(key, JSON.stringify(numberData));
+      }
+
+      function displayRandomNumber(elementId, duration, soThayDoi) {
+         document.getElementById(elementId).innerHTML = `<div style="width: 100%" id="random_number_loading">---</div>`;
+         setRandomNumberData(`randomNumberData_${elementId}`, elementId, duration, soThayDoi);
+         localStorage.setItem(elementId, soThayDoi);
+         setTimeout(() => {
+            document.getElementById(elementId).innerHTML = soThayDoi;
+            localStorage.removeItem(`randomNumberData_${elementId}`);
+         }, duration);
+      }
    </script>
    <script>
       const giai_arr = ['giaidb', 'giai1', 'giai2', 'giai5', 'giai7', 'giai8', 'giai3_1', 'giai3_2', 'giai4_1', 'giai4_2', 'giai4_3', 'giai4_4', 'giai4_5', 'giai4_6', 'giai4_7', 'giai6_1', 'giai6_2', 'giai6_3'];
       function getValueFromStorage() {
          giai_arr.forEach(giai => {
             const valueStorage = localStorage.getItem(giai);
-            if (valueStorage !== null) {
+            const numberData = getRandomNumberData(`randomNumberData_${giai}`);
+            const now = Date.now();
+            const displayLoadingTime = numberData?.expirationTime - now > 0 ? numberData?.expirationTime - now : 0;
+
+            if (numberData) {
+               document.getElementById(numberData.giai).innerHTML = `<div style="width: 100%" id="random_number_loading">---</div>`;
+               setTimeout(() => {
+                  document.getElementById(numberData.giai).innerHTML = numberData.soThayDoi;
+                  localStorage.removeItem(`randomNumberData_${giai}`);
+               }, displayLoadingTime);
+               return;
+            } if (valueStorage !== null) {
                const element = document.getElementById(giai);
                if (element) {
                   element.innerHTML = valueStorage;
                }
+               return;
+            } else {
+               document.getElementById(giai).innerHTML = `<img src="https://www.minhngoc.net.vn//template/2016/images/choxoso.gif" alt="Loading...">`;
             }
          });
       }
 
-      getValueFromStorage();
+      window.onload = () => {
+         getValueFromStorage();
+      }
    </script>
 </body>
 
